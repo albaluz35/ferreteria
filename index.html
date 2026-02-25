@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FerreterIA - Construye con visión. Diseña con inteligencia</title>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --azul: #1e40af;
+            --gris: #818181;
+            --naranja: #f97216;
+            --blanco: #fdfbfb;
+            --negro: #000000;
+        }
+
+        body {
+            font-family: 'Barlow', sans-serif;
+            color: var(--negro);
+            background-color: var(--blanco);
+            line-height: 1.6;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, var(--azul) 0%, #2563eb 100%);
+            color: var(--blanco);
+            padding: 1rem 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .logo-text {
+            font-size: 2rem;
+            font-weight: 800;
+            letter-spacing: 1px;
+        }
+
+        .logo-text .ia {
+            color: var(--naranja);
+        }
+
+        .eslogan {
+            font-size: 0.9rem;
+            font-weight: 300;
+            margin-top: 0.25rem;
+            opacity: 0.95;
+        }
+
+        .whatsapp-header {
+            background-color: #25D366;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: transform 0.2s;
+        }
+
+        .whatsapp-header:hover {
+            transform: scale(1.05);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--azul) 0%, #1e3a8a 100%);
+            color: var(--blanco);
+            padding: 4rem 1.5rem;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .hero h1 .ia-destacado {
+            color: var(--naranja);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            font-weight: 300;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background-color: var(--naranja);
+            color: var(--blanco);
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            display: inline-block;
+            transition: all 0.3s;
+        }
+
+        .btn-primary:hover {
+            background-color: #ea580c;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 20px rgba(249, 115, 22, 0.4);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--blanco);
+            padding: 1rem 2rem;
+            border: 2px solid var(--blanco);
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            display: inline-block;
+            transition: all 0.3s;
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--blanco);
+            color: var(--azul);
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem 1.5rem;
+        }
+
+        /* Secciones */
+        section {
+            margin-bottom: 4rem;
+        }
+
+        h2 {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--azul);
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        h2 .ia {
+            color: var(--naranja);
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--gris);
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto 3rem;
+        }
+
+        /* Cards de Servicios */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .service-card {
+            background: var(--blanco);
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            transition: all 0.3s;
+            border: 2px solid transparent;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(30, 64, 175, 0.15);
+            border-color: var(--azul);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .service-card h3 {
+            color: var(--azul);
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .service-card .ia {
+            color: var(--naranja);
+        }
+
+        .service-card p {
+            color: var(--gris);
+            margin-bottom: 1rem;
+        }
+
+        .badge {
+            display: inline-block;
+            background-color: var(--naranja);
+            color: var(--blanco);
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            margin-top: 0.5rem;
+        }
+
+        .badge.freemium {
+            background-color: #10b981;
+        }
+
+        /* Productos Grid */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .product-card {
+            background: var(--blanco);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            transition: all 0.3s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(30, 64, 175, 0.15);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            background-color: #f3f4f6;
+        }
+
+        .product-info {
+            padding: 1.5rem;
+        }
+
+        .product-info h3 {
+            color: var(--azul);
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .product-price {
+            color: var(--naranja);
+            font-size: 1.5rem;
+            font-weight: 800;
+            margin: 0.5rem 0;
+        }
+
+        .product-description {
+            color: var(--gris);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .btn-whatsapp {
+            background-color: #25D366;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-block;
+            width: 100%;
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .btn-whatsapp:hover {
+            background-color: #20ba5a;
+            transform: scale(1.02);
+        }
+
+        /* Compromiso Section */
+        .compromiso {
+            background: linear-gradient(135deg, #f3f4f6 0%, #e5e7eb 100%);
+            padding: 3rem;
+            border-radius: 20px;
+            margin-top: 3rem;
+        }
+
+        .compromiso h2 {
+            color: var(--azul);
+        }
+
+        .compromiso-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .compromiso-item {
+            text-align: center;
+            padding: 1.5rem;
+        }
+
+        .compromiso-item .icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .compromiso-item h3 {
+            color: var(--azul);
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .compromiso-item p {
+            color: var(--gris);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--azul);
+            color: var(--blanco);
+            padding: 3rem 1.5rem 1.5rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            color: var(--naranja);
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .footer-section p,
+        .footer-section a {
+            color: var(--blanco);
+            text-decoration: none;
+            display: block;
+            margin-bottom: 0.5rem;
+            opacity: 0.9;
+        }
+
+        .footer-section a:hover {
+            color: var(--naranja);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            opacity: 0.8;
+        }
+
+        /* WhatsApp Floating Button */
+        .whatsapp-float {
+            position: fixed;
+            width: 60px;
+            height: 60px;
+            bottom: 30px;
+            right: 30px;
+            background-color: #25D366;
+            color: white;
+            border-radius: 50px;
+            text-align: center;
+            font-size: 30px;
+            box-shadow: 2px 2px 15px rgba(0,0,0,0.3);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .whatsapp-float:hover {
+            background-color: #20ba5a;
+            transform: scale(1.1);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .logo-text {
+                font-size: 1.5rem;
+            }
+
+            .header-content {
+                justify-content: center;
+                text-align: center;
+            }
+
+            .whatsapp-header {
+                margin-top: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-content">
+            <div>
+                <div class="logo-text">
+                    FERRETER<span class="ia">IA</span>
+                </div>
+                <div class="eslogan">Construye con visión. Diseña con inteligencia</div>
+            </div>
+            <a href="https://wa.me/573157175675?text=Hola,%20quiero%20información%20sobre%20sus%20servicios" 
+               class="whatsapp-header" target="_blank">
+                📱 WhatsApp
+            </a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>Una Oportunidad de Transformación para las Famil<span class="ia-destacado">IAs</span> de Medellín</h1>
+        <p>Ayudamos a construir tu hogar con servicios especializados en diseño arquitectónico usando <strong>Inteligencia Artificial</strong> y modelos generativos de vanguardia</p>
+        <div class="cta-buttons">
+            <a href="#servicios" class="btn-primary">Ver Servicios con IA</a>
+            <a href="#productos" class="btn-secondary">Productos Básicos</a>
+        </div>
+    </section>
+
+    <div class="container">
+        <!-- Servicios IA -->
+        <section id="servicios">
+            <h2>Nuestros Servicios con <span class="ia">IA</span></h2>
+            <p class="section-subtitle">
+                Innovación de Vanguard<span style="color: var(--naranja);">IA</span> para hacer realidad el sueño de tu hogar
+            </p>
+
+            <div class="services-grid">
+                <!-- Servicio 1: Diseño 3D con IA -->
+                <div class="service-card">
+                    <div class="service-icon">🏗️</div>
+                    <h3>Diseño 3D con <span class="ia">IA</span> Generativa</h3>
+                    <p>Visualiza tu proyecto antes de construir usando modelos de inteligencia artificial. Diseños profesionales en horas, no semanas.</p>
+                    <span class="badge freemium">Consulta GRATIS inicial</span>
+                    <br><br>
+                    <a href="https://wa.me/573157175675?text=Quiero%20información%20sobre%20diseño%203D%20con%20IA" 
+                       class="btn-whatsapp" target="_blank">
+                        Consultar por WhatsApp
+                    </a>
+                </div>
+
+                <!-- Servicio 2: Asesoría Técnica -->
+                <div class="service-card">
+                    <div class="service-icon">👷</div>
+                    <h3>Asesoría Técnica Especializada</h3>
+                    <p>Orientación profesional en uso eficiente y correcto de materiales, seguridad estructural y optimización de tu presupuesto.</p>
+                    <span class="badge">Servicio Premium</span>
+                    <br><br>
+                    <a href="https://wa.me/573157175675?text=Necesito%20asesoría%20técnica%20para%20mi%20proyecto" 
+                       class="btn-whatsapp" target="_blank">
+                        Solicitar Asesoría
+                    </a>
+                </div>
+
+                <!-- Servicio 3: Modelo de Intermediación -->
+                <div class="service-card">
+                    <div class="service-icon">🤝</div>
+                    <h3>Intermediación Digital con Aliados</h3>
+                    <p>Accede a precios preferenciales en materiales de construcción a través de nuestros aliados estratégicos + servicio freemium incluido.</p>
+                    <span class="badge freemium">Precio preferencial + Asesoría</span>
+                    <br><br>
+                    <a href="https://wa.me/573157175675?text=Quiero%20cotizar%20materiales%20con%20precio%20preferencial" 
+                       class="btn-whatsapp" target="_blank">
+                        Cotizar Materiales
+                    </a>
+                </div>
+
+                <!-- Servicio 4: Planificación Completa -->
+                <div class="service-card">
+                    <div class="service-icon">📐</div>
+                    <h3>Planificación Arquitectónica Integral</h3>
+                    <p>Desde el concepto hasta los planos ejecutivos. Te entregamos lineamientos y buenas prácticas técnicas y legales para tu construcción.</p>
+                    <span class="badge">Servicio Premium</span>
+                    <br><br>
+                    <a href="https://wa.me/573157175675?text=Necesito%20planificación%20completa%20para%20mi%20proyecto" 
+                       class="btn-whatsapp" target="_blank">
+                        Iniciar Proyecto
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Productos Top 10 -->
+        <section id="productos">
+            <h2>Productos Básicos de Alta Rotación</h2>
+            <p class="section-subtitle">
+                Los esenciales para tu hogar. También cotizamos cualquier otro material que necesites a través de nuestros aliados estratégicos
+            </p>
+
+            <div class="products-grid">
+                <!-- Producto 1 -->
+                <div class="product-card">
+                    <img src="https://colombia.argos.co/wp-content/uploads/2020/09/Fotografia-seccion-PRODUCTOS-Bulto-Cemento-Gris.jpgcw=500&h=500&fit=crop" 
+                         alt="Cemento gris" class="product-image">
+                    <div class="product-info">
+                        <h3>Cemento Gris x 50kg</h3>
+                        <p class="product-price">$34,000</p>
+                        <p class="product-description">Cemento de alta calidad para construcción. Marca reconocida.</p>
+                        <a href="https://wa.me/573157175675?text=Quiero%20comprar%20Cemento%20Gris" 
+                           class="btn-whatsapp" target="_blank">
+                            Comprar por WhatsApp
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Producto 2 -->
+                <div class="product-card">
+                    <img src="https://images.unsplash.com/photo-1585128792304-49ccee2bff4c?w=500&h=500&fit=crop" 
+                         alt="Ladrillo" class="product-image">
+                    <div class="product-info">
+                        <h3>Ladrillo Tolete</h3>
+                        <p class="product-price">$800</p>
+                        <p class="product-description">Unidad. Ladrillo resistente para muros y construcción general.</p>
+                        <a href="https://wa.me/573157175675?text=Quiero%20comprar%20Ladrillos%20Tolete" 
+                           class="btn-whatsapp" target="_blank">
+                            Comprar por WhatsApp
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Producto 3 -->
+                <div class="product-card">
+                    <img src="https://images.unsplash.com/photo-1589939705384-5185137a7f0f?w=500&h=500&fit=crop" 
+                         alt="Arena" class="product-image">
+                    <div class="product-info">
+                        <h3>Arena Lavada (Bulto)</h3>
+                        <p class="product-price">$8,500</p>
+                        <p class="product-description">Bulto de 40kg. Arena lavada ideal para mezclas y pañetes.</p>
+                        <a href="https://wa.me/573157175675?text=Quiero%20comprar%20Arena%20Lavada" 
+                           class="btn-whatsapp" target="_blank">
+                            Comprar por WhatsApp
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Producto 4 -->
+                <div class="product-card">
+                    <img src="https://images.unsplash.com/photo-1606656921577-2b30e4cef5e2?w=500&h=500&fit=crop" 
+                         alt="Pintura" class="product-image">
+                    <div class="product-info">
+                        <h3>Pintura Vinilo Blanco (Galón)</h3>
+                        <p class="product-price">$35,000</p>
+                        <p class="product-description">Galón de pintura vinilo lavable. Alto cubrimiento.</p>
+                        <a href="https://wa.me/573157175675?text=Quiero%20comprar%20Pintura%20Vinilo" 
+                           class="btn-whatsapp" target="_blank">
+                            Comprar por WhatsApp
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Producto 5 -->
+                <div class="product-card">
+                    <img src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=500&h=500&fit=crop" 
+                         alt="Varilla" class="product-image">
+                    <div class="product-info">
+                        <h3>Varilla de Hierro 3/8" (6m)</h3>
+                        <p class="product-price">$22,000</p>
+                        <p class="product-description">Unidad de 6 metros. Para estructuras y refuerzo de concreto.</p>
+                        <a href="https://wa.me/573157175675?text=Quiero%20comprar%20Varillas%203/8" 
+                           class="btn-whatsa
